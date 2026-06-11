@@ -36,3 +36,7 @@ en la terminal indicara el link para poder ver visualmente la pagina en modo des
 ## Integrantes
 
 Tomás Martín Lena Jodry
+
+
+## Deploy en Vercel 
+dejo a continuacion el deplo realizado en Vercel. entrar con este link: https://libreria-oeste-grupo14.vercel.app/
