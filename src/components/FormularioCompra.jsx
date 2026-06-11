@@ -1,55 +1,53 @@
 import { useState } from 'react';
 
-export default function FormularioCompra({ carrito = [], vaciarCarrito }) {
+export default function FormularioCompra() {
     const [datos, setDatos] = useState({
-    nombre: '',
-    email: '',
-    telefono: '',
-    direccion: '',
-    metodoEntrega: 'sucursal',
-    mensaje: ''
+        nombre: '',
+        email: '',
+        telefono: '',
+        direccion: '',
+        metodoEntrega: 'sucursal',
+        mensaje: ''
     });
 
     const [errores, setErrores] = useState({});
     const [enviado, setEnviado] = useState(false);
 
     const handleInputChange = (e) => {
-    setDatos({
-        ...datos,
-        [e.target.name]: e.target.value
-    });
-    
-    if (errores[e.target.name]) {
-        setErrores({ ...errores, [e.target.name]: '' });
-    }
+        setDatos({
+            ...datos,
+            [e.target.name]: e.target.value
+        });
+        
+        if (errores[e.target.name]) {
+            setErrores({ ...errores, [e.target.name]: '' });
+        }
     };
 
     const handleSubmit = (e) => {
-    e.preventDefault();
-    const nuevosErrores = {};
+        e.preventDefault();
+        const nuevosErrores = {};
 
-    if (!datos.nombre.trim()) nuevosErrores.nombre = 'El nombre y apellido son obligatorios';
-    
-    if (!datos.email.trim()) {
-        nuevosErrores.email = 'El email es obligatorio';
-    } else if (!/\S+@\S+\.\S+/.test(datos.email)) {
-        nuevosErrores.email = 'El formato del email no es válido';
-    }
+        if (!datos.nombre.trim()) nuevosErrores.nombre = 'El nombre y apellido son obligatorios';
+        
+        if (!datos.email.trim()) {
+            nuevosErrores.email = 'El email es obligatorio';
+        } else if (!/\S+@\S+\.\S+/.test(datos.email)) {
+            nuevosErrores.email = 'El formato del email no es válido';
+        }
 
-    if (!datos.telefono.trim()) nuevosErrores.telefono = 'El teléfono es obligatorio';
-    if (!datos.direccion.trim()) nuevosErrores.direccion = 'La dirección o localidad es obligatoria';
+        if (!datos.telefono.trim()) nuevosErrores.telefono = 'El teléfono es obligatorio';
+        if (!datos.direccion.trim()) nuevosErrores.direccion = 'La dirección o localidad es obligatoria';
 
-    if (Object.keys(nuevosErrores).length > 0) {
-        setErrores(nuevosErrores);
-        return;
-    }
+        if (Object.keys(nuevosErrores).length > 0) {
+            setErrores(nuevosErrores);
+            return;
+        }
 
-    setEnviado(true);
-    setErrores({});
-    
-    if (vaciarCarrito) vaciarCarrito();
-    
-    console.log("Datos de la compra enviados con éxito:", datos, "Productos:", carrito);
+        setEnviado(true);
+        setErrores({});
+        
+        console.log("Datos de la compra enviados con éxito:", datos);
     };
 
     return (
