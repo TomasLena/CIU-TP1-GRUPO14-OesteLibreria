@@ -3,7 +3,7 @@ import { Quote, ArrowRight, BookOpenCheck } from 'lucide-react';
 
 export default function AutorDelMes({ libroRecomendado }) {
     return (
-        <section className="w-full bg-slate-900 border-t border-b border-slate-800 mt-4 mb-24">
+        <section className="w-full bg-slate-900 border-t border-b border-slate-800 mt-4 mb-0">
         <div className="grid grid-cols-1 lg:grid-cols-2">
             
             <div className="relative p-8 md:p-12 lg:p-16 xl:p-20 flex flex-col justify-center text-left lg:border-r border-slate-800 overflow-hidden">
