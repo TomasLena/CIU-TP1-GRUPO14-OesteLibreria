@@ -60,11 +60,11 @@ export default function Header({ carrito = [] }) {
               <input 
                 type="text" 
                 placeholder="Buscar por título, autor..." 
-                className="w-full border-2 border-slate-300 rounded-l-md py-2 px-4 focus:outline-none focus:border-slate-800 transition-colors text-slate-700"
+                className="w-full border-2 border-slate-300 rounded-l-md py-2 px-4 focus:outline-none focus:border-orange-500 transition-colors text-slate-700"
                 value={busqueda}
                 onChange={(e) => setBusqueda(e.target.value)}
               />
-              <button type="submit" className="bg-slate-900 text-white px-6 rounded-r-md hover:bg-slate-800 transition-colors flex items-center justify-center">
+              <button type="submit" className="bg-slate-900 text-white px-6 rounded-r-md hover:bg-orange-500 transition-all duration-200 flex items-center justify-center hover:scale-110 active:scale-95">
                 <Search className="w-5 h-5" />
               </button>
             </form>
@@ -85,8 +85,8 @@ export default function Header({ carrito = [] }) {
                   {cantidadTotal}
                 </span>
               </div>
-              <div className="hidden md:flex flex-col">
-                <span className="text-[11px] text-slate-500 leading-none">Mi Carrito</span>
+              <div className="hidden md:flex flex-col ml-3">
+                <span className="text-[11px] font-black text-slate-800 tracking-wide">Mi Carrito</span>
                 
                 <span className="text-sm font-bold text-slate-800 leading-none mt-1">
                   ${precioTotal.toLocaleString('es-AR')}
