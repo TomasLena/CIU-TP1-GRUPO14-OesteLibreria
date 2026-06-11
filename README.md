@@ -40,4 +40,4 @@ Julian Gabriel Blanco
 
 
 ## Deploy en Vercel 
-dejo a continuacion el deplo realizado en Vercel. entrar con este link: https://libreria-oeste-grupo14.vercel.app/
+dejo a continuacion el deplo realizado en Vercel. entrar con este link: https://tp1-grupo14-libreria.vercel.app/
