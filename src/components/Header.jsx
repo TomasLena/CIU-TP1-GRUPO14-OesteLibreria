@@ -11,16 +11,22 @@ export default function Header({ carrito = [] }) {
   const precioTotal = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
 
     useEffect(() => {
-      if (cantidadTotal === 0) return;
+    if (cantidadTotal === 0) return;
 
+    // fix para evitar el "cascading render"
+    const timerStart = setTimeout(() => {
       setAnimarCarrito(true);
+    }, 10);
 
-      const timer = setTimeout(() => {
-        setAnimarCarrito(false);
-      }, 300);
+    const timerEnd = setTimeout(() => {
+      setAnimarCarrito(false);
+    }, 300);
 
-      return () => clearTimeout(timer);
-    }, [cantidadTotal]);
+    return () => {
+      clearTimeout(timerStart);
+      clearTimeout(timerEnd);
+    };
+  }, [cantidadTotal]);
 
   const handleSearch = (e) => {
     e.preventDefault();
