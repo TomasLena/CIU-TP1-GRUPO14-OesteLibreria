@@ -40,7 +40,6 @@ export default function Inicio() {
           Explorar Catálogo
         </Link>
       </div>
-
       <AutorDelMes libroRecomendado={libroRecomendado} />
 
     </div>
