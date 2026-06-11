@@ -14,13 +14,19 @@ export default function FormularioCompra() {
     const [enviado, setEnviado] = useState(false);
 
     const handleInputChange = (e) => {
+        let { name, value } = e.target;
+
+        if (name === 'telefono') {
+            value = value.replace(/\D/g, ''); 
+        }
+
         setDatos({
             ...datos,
-            [e.target.name]: e.target.value
+            [name]: value
         });
         
-        if (errores[e.target.name]) {
-            setErrores({ ...errores, [e.target.name]: '' });
+        if (errores[name]) {
+            setErrores({ ...errores, [name]: '' });
         }
     };
 
@@ -96,7 +102,7 @@ export default function FormularioCompra() {
                 value={datos.telefono}
                 onChange={handleInputChange}
                 className={`w-full border p-2.5 rounded-lg focus:outline-none focus:border-orange-500 transition-colors ${errores.telefono ? 'border-red-500 bg-red-50/50' : 'border-slate-300'}`}
-                placeholder="11 2345-6789"
+                placeholder="1123456789"
                 />
                 {errores.telefono && <p className="text-red-500 text-xs font-bold mt-1">{errores.telefono}</p>}
             </div>
@@ -109,7 +115,7 @@ export default function FormularioCompra() {
                 value={datos.direccion}
                 onChange={handleInputChange}
                 className={`w-full border p-2.5 rounded-lg focus:outline-none focus:border-orange-500 transition-colors ${errores.direccion ? 'border-red-500 bg-red-50/50' : 'border-slate-300'}`}
-                placeholder="Av. de Mayo 1234, Ramos Mejía"
+                placeholder="Av. Roca, Hurlingham"
                 />
                 {errores.direccion && <p className="text-red-500 text-xs font-bold mt-1">{errores.direccion}</p>}
             </div>
