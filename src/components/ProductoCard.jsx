@@ -54,10 +54,10 @@ export default function ProductoCard({ producto, agregarAlCarrito }) {
           <button
             disabled={sinStock}
             onClick={() => agregarAlCarrito(producto)}
-            className={`flex-1 flex justify-center items-center gap-2 py-2.5 rounded-md text-sm font-bold transition-colors ${
+            className={`flex-1 flex justify-center items-center gap-2 py-2.5 rounded-md text-sm font-bold transition-all duration-200 ${
               sinStock
                 ? 'bg-slate-200 text-slate-400 cursor-not-allowed'
-                : 'bg-orange-500 text-white hover:bg-orange-600 shadow-sm hover:shadow'
+                : 'bg-orange-500 text-white hover:bg-orange-600 shadow-sm hover:scale-[1.09] active:scale-95'
             }`}
           >
             <ShoppingCart className="w-4 h-4" />

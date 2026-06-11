@@ -1,13 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Search, ShoppingCart, Truck } from 'lucide-react';
 
 export default function Header({ carrito = [] }) {
   const [busqueda, setBusqueda] = useState('');
+  const [animarCarrito, setAnimarCarrito] = useState(false);
   const navigate = useNavigate();
 
   const cantidadTotal = carrito.reduce((acc, item) => acc + item.cantidad, 0);
   const precioTotal = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
+
+    useEffect(() => {
+      if (cantidadTotal === 0) return;
+
+      setAnimarCarrito(true);
+
+      const timer = setTimeout(() => {
+        setAnimarCarrito(false);
+      }, 300);
+
+      return () => clearTimeout(timer);
+    }, [cantidadTotal]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -57,10 +70,17 @@ export default function Header({ carrito = [] }) {
             </form>
           </div>
 
-          <div className="flex items-center shrink-0 order-2 md:order-3">
-            <Link to="/carrito" className="flex items-center gap-2 group">
-              <div className="relative">
-                <ShoppingCart className="w-7 h-7 text-slate-800 group-hover:text-orange-500 transition-colors" />
+            <div className="flex items-center shrink-0 order-2 md:order-3">
+            <Link 
+                to="/carrito" 
+                onClick={() => {
+                  setAnimarCarrito(true);
+                  setTimeout(() => setAnimarCarrito(false), 300);
+                }}
+                className="flex items-center gap-2 group"
+              >
+                <div className={`relative transition-all duration-300 ${animarCarrito ? 'scale-125 text-orange-500' : ''}`}>
+                  <ShoppingCart className={`w-7 h-7 text-slate-800 group-hover:text-orange-500 transition-colors ${animarCarrito ? 'animate-pulse text-orange-500' : ''}`} />
                 <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center border-2 border-white">
                   {cantidadTotal}
                 </span>

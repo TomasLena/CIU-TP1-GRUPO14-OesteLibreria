@@ -51,8 +51,10 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
+      <div className= "sticky top-0 z-50 w-full bg-white shadow-sm">
       <Header carrito={carrito} />
       <Navbar />
+      </div>
       
       <main className="flex-grow w-full">
         <Routes>
