@@ -36,6 +36,7 @@ en la terminal indicara el link para poder ver visualmente la pagina en modo des
 ## Integrantes
 
 Tomás Martín Lena Jodry
+Julian Gabriel Blanco
 
 
 ## Deploy en Vercel 
